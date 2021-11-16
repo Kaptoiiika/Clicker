@@ -22,5 +22,17 @@ class Building {
   }
 }
 
+
+
 farm = new Building({ price: 50, production: 5, delayProduction: 3 })
 factory = new Building({ price: 150, production: 15, delayProduction: 3 })
+sponsor = new Building({ price: 950, production: 50, delayProduction: 10 })
+
+document.getElementById("RightColumn").innerText = `<input
+                                                        class="upgradeButton"
+                                                        id="farm_Button"
+                                                        value="farm"
+                                                        onclick="bought(id)"
+                                                        type="button"
+                                                    />`
+
