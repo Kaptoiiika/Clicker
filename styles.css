@@ -1,0 +1,42 @@
+.LeftSide {
+  width: 30%;
+  float: left;
+  min-height: 100%;
+}
+.LeftSide > * {
+  width: 100px;
+  height: 50px;
+}
+.CentrSide {
+  width: 40%;
+  min-height: 100%;
+  float: left;
+}
+.CentrSide > * {
+    width: 100px;
+    height: 50px;
+    align-self: center;
+}
+.RightSide {
+  width: 30%;
+  min-height: 100%;
+  float: left;
+}
+.RightSide > * {
+
+}
+/* #kapi_Button{
+    margin: 10px;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    left: 50%;
+  top: 50%;
+} */
+.push_box{
+    width: auto;
+    height: 55px;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: aqua;
+}

@@ -8,7 +8,7 @@ class Building {
     this.delayProduction = option.delayProduction
     this.cps = this.production / this.delayProduction
     this.count = 0
-    Building.iter.push(this.name)
+    Building.iter.push(this)
   }
   update() {
     game.coinUpdate(this.production)
@@ -23,9 +23,11 @@ class Building {
         this.update()
       }, this.delayProduction * 1000)
     }
-     
+
     document.getElementById(`${this.name}_count`).innerText = this.count
-    document.getElementById(`${this.name}_button`).value = `price = ${this.price.toFixed(0)}`
+    document.getElementById(
+      `${this.name}_button`
+    ).value = `price = ${this.price.toFixed(0)}`
   }
 }
 
@@ -61,12 +63,13 @@ group = new Building({
 })
 
 setTimeout(() => {
-  Building.iter.map((_name) => {
+  Building.iter.map((obj) => {
+    _name = obj.name
     document.getElementsByClassName(
       "RightSide"
-    )[0].innerHTML += `<label id="${_name}_Label" for="${_name}">${_name}</label>
-    <input class="upgradeButton" id="${_name}_button" value="0"onclick="bought(id)" type="button"/>
+    )[0].innerHTML += `<div class ="push_box"><label id="${_name}_Label" for="${_name}">${_name}</label>
+    <input class="upgradeButton" id="${_name}_button" value="${obj.price}"onclick="bought(id)" type="button"/>
     <label id="${_name}_count" for="${_name}"></label>
-    <br>`
+    </div>`
   })
 }, 0)
