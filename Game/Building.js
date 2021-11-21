@@ -1,5 +1,9 @@
 class Building {
   static iter = []
+  static getCountOf() {
+    let obj = this.iter.map((name) => {})
+    return JSON.stringify(obj)
+  }
 
   constructor(option) {
     this.name = option.name
@@ -7,6 +11,8 @@ class Building {
     this.production = option.production
     this.delayProduction = option.delayProduction
     this.cps = this.production / this.delayProduction
+    this.img = option.img
+
     this.count = 0
     Building.iter.push(this)
   }
@@ -15,19 +21,21 @@ class Building {
   }
 
   bought(amount) {
-    this.count++
-    game.coinUpdate(-this.price)
-    this.price *= 1.2
-    if (this.count > 0) {
-      setInterval(() => {
-        this.update()
-      }, this.delayProduction * 1000)
-    }
+    if (game.coin >= this.price) {
+      this.count++
+      game.coinUpdate(-this.price)
+      this.price *= 1.2
+      if (this.count > 0) {
+        setInterval(() => {
+          this.update()
+        }, this.delayProduction * 1000)
+      }
 
-    document.getElementById(`${this.name}_count`).innerText = this.count
-    document.getElementById(
-      `${this.name}_button`
-    ).value = `price = ${this.price.toFixed(0)}`
+      document.getElementById(`${this.name}_count`).innerText = this.count
+      document.getElementById(
+        `${this.name}_button`
+      ).value = `${this.price.toFixed(0)}`
+    }
   }
 }
 
@@ -36,40 +44,33 @@ farm = new Building({
   price: 50,
   production: 5,
   delayProduction: 3,
+  img: "img/FarmIcon.png"
 })
 factory = new Building({
   name: "factory",
   price: 150,
   production: 15,
   delayProduction: 3,
+  img: 'img/factory.jpg'
 })
 sponsor = new Building({
   name: "sponsor",
   price: 950,
   production: 50,
   delayProduction: 10,
+  img: ''
 })
 company = new Building({
   name: "company",
   price: 5000,
   production: 500,
   delayProduction: 10,
+  img: ''
 })
 group = new Building({
   name: "group",
   price: 25000,
   production: 1500,
   delayProduction: 10,
+  img: 'png'
 })
-
-setTimeout(() => {
-  Building.iter.map((obj) => {
-    _name = obj.name
-    document.getElementsByClassName(
-      "RightSide"
-    )[0].innerHTML += `<div class ="push_box"><label id="${_name}_Label" for="${_name}">${_name}</label>
-    <input class="upgradeButton" id="${_name}_button" value="${obj.price}"onclick="bought(id)" type="button"/>
-    <label id="${_name}_count" for="${_name}"></label>
-    </div>`
-  })
-}, 0)

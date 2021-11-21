@@ -27,14 +27,4 @@ FarmTier1 = new Enchanted({
     farm.production *= 2
   },
 })
-setTimeout(() => {
-  Enchanted.iter.map((obj) => {
-    _name = obj.name
-    document.getElementsByClassName(
-      "LeftSide"
-    )[0].innerHTML += `<div class ="push_box">
-    <label id="${_name}_Label" for="${_name}">${_name}</label>
-    <input class="upgradeButton" id="${_name}_button" value="${obj.price}"onclick="${_name}.bought()" type="button"/>
-    </div>`
-  })
-}, 0)
+

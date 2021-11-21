@@ -1,3 +1,13 @@
+
+div{
+  border: 1px solid green;
+}
+
+
+.UpSide {
+  width: 100%;
+  height: 25px;
+}
 .LeftSide {
   width: 30%;
   float: left;
@@ -9,34 +19,66 @@
 }
 .CentrSide {
   width: 40%;
+  height: 100%;
   min-height: 100%;
   float: left;
 }
 .CentrSide > * {
-    width: 100px;
-    height: 50px;
-    align-self: center;
+  width: 100%;
+  height: 50%;
+}
+#kapi>*{
+  width: 256px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto ;
+  text-align: center;
 }
 .RightSide {
-  width: 30%;
+  width: 29%;
   min-height: 100%;
   float: left;
 }
-.RightSide > * {
 
+
+.push_box {
+  position: relative; 
+
+  width: auto;
+  height: 110px;
+  margin: 10px;
+  border-radius: 15px;
+  background-color: bisque;
 }
-/* #kapi_Button{
-    margin: 10px;
-    border-radius: 50%;
-    width: 250px;
-    height: 250px;
-    left: 50%;
-  top: 50%;
-} */
-.push_box{
-    width: auto;
-    height: 55px;
-    margin: 10px;
-    border-radius: 15px;
-    background-color: aqua;
+.push_box:hover {
+  background-color: #f1d7b6;
+}
+.push_box:active{
+  background-color: #eecea5;
+}
+.push_box > * {
+  position: absolute;
+}
+.pictureShop {
+  width: 100px;
+  height: 100px;
+}
+.pictureShop > img{
+  width: 100px;
+  height: 100px;
+  margin: 5px 0px 5px 5px;
+}
+.textShop {
+  margin-left: 120px;
+}
+.push_box[value~="left"]{
+  background-color: bisque;
+}
+.pictureShop[value~="left"] {
+  right: 0px; 
+}
+.textShop[value~="left"] {
+  right: 0;
+  margin-left: 0px;
+  margin-right: 110px;
 }
