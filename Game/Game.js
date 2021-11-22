@@ -1,7 +1,7 @@
 class Game {
   constructor(option) {
     this._coin = option._coin
-    this.coin = 10000
+    this.coin = 0
   }
 
   coinUpdate(change) {
@@ -12,3 +12,6 @@ class Game {
     this.coinUpdate(1)
   }
 }
+
+
+

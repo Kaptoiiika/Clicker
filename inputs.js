@@ -5,19 +5,13 @@ setTimeout(() => {
       "RightSide"
     )[0].innerHTML += 
     `
-    <div class="push_box" value="">
+    <div class="push_box" onclick=${_name}.bought(1) value="">
       <div class="pictureShop" value="">
         <img src="${obj.img}" />
       </div>
       <div class="textShop" value="">
         <h4 id="${_name}_Label" for="${_name}">${_name}</h4>
-        <input
-          class="upgradeButton"
-          id="${_name}_button"
-          value="${obj.price}"
-          onclick=${_name}.bought()
-          type="button"
-        />
+        <p id="${_name}_button">${obj.price}</p>
       </div>
       <label id="${_name}_count" for="${_name}"></label>
     </div>
@@ -31,19 +25,13 @@ setTimeout(() => {
     document.getElementsByClassName(
       "LeftSide"
     )[0].innerHTML +=     `
-    <div class="push_box" value="left">
+    <div class="push_box" onclick=${_name}.bought(1)value="left">
       <div class="pictureShop" value="left">
         <img src="${obj.img}" />
       </div>
       <div class="textShop" value="left">
         <h4 id="${_name}_Label" for="${_name}">${_name}</h4>
-        <input
-          class="upgradeButton"
-          id="${_name}_button"
-          value="${obj.price}"
-          onclick=${_name}.bought()
-          type="button"
-        />
+<p>${obj.price}</p>
       </div>
       <label id="${_name}_count" for="${_name}"></label>
     </div>

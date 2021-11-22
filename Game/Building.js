@@ -20,11 +20,13 @@ class Building {
     game.coinUpdate(this.production)
   }
 
-  bought(amount) {
+  bought(amount,isload = false) {
     if (game.coin >= this.price) {
-      this.count++
+      this.count+=amount
+      if(!isload){
       game.coinUpdate(-this.price)
-      this.price *= 1.2
+      }
+      this.price *= Math.pow(1.2,amount)
       if (this.count > 0) {
         setInterval(() => {
           this.update()
@@ -34,7 +36,7 @@ class Building {
       document.getElementById(`${this.name}_count`).innerText = this.count
       document.getElementById(
         `${this.name}_button`
-      ).value = `${this.price.toFixed(0)}`
+      ).innerText = `${this.price.toFixed(0)}`
     }
   }
 }

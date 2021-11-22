@@ -13,9 +13,10 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="UpSide"></div>
+    <div class="UpSide">
+      <input value="save" onclick="save()" type="button" />
+    </div>
     <div class="LeftSide">
-
       <div class="push_box" value="left">
         <div class="pictureShop" value="left">
           <img src="img/FarmIcon.png" />
@@ -32,20 +33,19 @@
         </div>
         <label id="${_name}_count" for="${_name}"></label>
       </div>
-
     </div>
     <div class="CentrSide">
       <div class="UpBox">
         <div id="kapi">
-          <img src="img/kapitoxa.png" alt="">
-          <input
+          <img
             id="kapi_Button"
-            value="kapi"
+            src="img/kapitoxa.png"
             onclick="game.kapiClick()"
-            type="button"
+            alt=""
           />
           <h1 id="coins">0</h1>
         </div>
+
       </div>
 
       <div class="DownBox"></div>
