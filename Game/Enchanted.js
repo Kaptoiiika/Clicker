@@ -9,22 +9,51 @@ class Enchanted {
     this.enchant = option.enchant
     Enchanted.iter.push(this)
   }
-  bought() {
-    if (!this.isUnlock) {
+  bought(Unlock = false) {
+    if (!this.isUnlock && game.coin >= this.price || Unlock === true) {
       this.enchant()
       this.isUnlock = !this.isUnlock
-    } else {
+      document.getElementById(`${this.name}_box`).style.display = `none`
+    } else if(game.coin < this.price){
+      console.log("you don't have coins");
+    }
+    else{
       console.log("you already have this")
     }
   }
 }
 
-FarmTier1 = new Enchanted({
-  name: "FarmTier1",
+farmTier1 = new Enchanted({
+  name: "farmTier1",
   price: 300,
   conditions: "farm.count >= 5",
   enchant: () => {
     farm.production *= 2
   },
 })
+factoryTier1 = new Enchanted({
+  name: "factoryTier1",
+  price: 5000,
+  conditions: "farm.count >= 5",
+  enchant: () => {
+    factory.production *= 2
+  },
+})
+sponsorTier1 = new Enchanted({
+  name: "sponsorTier1",
+  price: 30000,
+  conditions: "farm.count >= 5",
+  enchant: () => {
+    sponsor.production *= 2
+  },
+})
+groupTier1 = new Enchanted({
+  name: "groupTier1",
+  price: 150000,
+  conditions: "farm.count >= 5",
+  enchant: () => {
+    group.production *= 2
+  },
+})
+
 

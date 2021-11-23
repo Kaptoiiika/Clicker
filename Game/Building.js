@@ -1,9 +1,5 @@
 class Building {
   static iter = []
-  static getCountOf() {
-    let obj = this.iter.map((name) => {})
-    return JSON.stringify(obj)
-  }
 
   constructor(option) {
     this.name = option.name
@@ -13,25 +9,33 @@ class Building {
     this.cps = this.production / this.delayProduction
     this.img = option.img
 
-    this.count = 0
+    setInterval(() => {
+      this.update()
+    }, this.delayProduction * 1000)
+
+    this.counts = 0
+    this.isOff = true
     Building.iter.push(this)
   }
-  update() {
-    game.coinUpdate(this.production)
+  get count() {
+    return this.count
+  }
+  set count(val) {
+    this.count += val
+    this.price *= Math.pow(1.2, amount)
   }
 
-  bought(amount,isload = false) {
+  update() {
+    game.coinUpdate(this.production * this.count)
+  }
+
+  bought(amount, isload = false) {
     if (game.coin >= this.price) {
-      this.count+=amount
-      if(!isload){
-      game.coinUpdate(-this.price)
+      this.count += amount
+      if (!isload) {
+        game.coinUpdate(-this.price)
       }
-      this.price *= Math.pow(1.2,amount)
-      if (this.count > 0) {
-        setInterval(() => {
-          this.update()
-        }, this.delayProduction * 1000)
-      }
+      this.price *= Math.pow(1.2, amount)
 
       document.getElementById(`${this.name}_count`).innerText = this.count
       document.getElementById(
@@ -46,33 +50,33 @@ farm = new Building({
   price: 50,
   production: 5,
   delayProduction: 3,
-  img: "img/FarmIcon.png"
+  img: "img/FarmIcon.png",
 })
 factory = new Building({
   name: "factory",
   price: 150,
   production: 15,
   delayProduction: 3,
-  img: 'img/factory.jpg'
+  img: "img/factory.jpg",
 })
 sponsor = new Building({
   name: "sponsor",
   price: 950,
   production: 50,
   delayProduction: 10,
-  img: ''
+  img: "",
 })
 company = new Building({
   name: "company",
   price: 5000,
   production: 500,
   delayProduction: 10,
-  img: ''
+  img: "",
 })
 group = new Building({
   name: "group",
   price: 25000,
   production: 1500,
   delayProduction: 10,
-  img: 'png'
+  img: "png",
 })

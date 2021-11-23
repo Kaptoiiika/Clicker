@@ -1,10 +1,7 @@
-setTimeout(() => {
+function inputs() {
   Building.iter.map((obj) => {
     _name = obj.name
-    document.getElementsByClassName(
-      "RightSide"
-    )[0].innerHTML += 
-    `
+    document.getElementsByClassName("RightSide")[0].innerHTML += `
     <div class="push_box" onclick=${_name}.bought(1) value="">
       <div class="pictureShop" value="">
         <img src="${obj.img}" />
@@ -17,24 +14,19 @@ setTimeout(() => {
     </div>
   `
   })
-}, 0)
-
-setTimeout(() => {
   Enchanted.iter.map((obj) => {
     _name = obj.name
-    document.getElementsByClassName(
-      "LeftSide"
-    )[0].innerHTML +=     `
-    <div class="push_box" onclick=${_name}.bought(1)value="left">
+    document.getElementsByClassName("LeftSide")[0].innerHTML += `
+    <div id="${_name}_box" class="push_box" onclick=${_name}.bought(1) value="left">
       <div class="pictureShop" value="left">
-        <img src="${obj.img}" />
+        <img src="${obj.img}"/>
       </div>
       <div class="textShop" value="left">
         <h4 id="${_name}_Label" for="${_name}">${_name}</h4>
-<p>${obj.price}</p>
+        <p>${obj.price}</p> 
       </div>
       <label id="${_name}_count" for="${_name}"></label>
     </div>
   `
   })
-}, 0)
+}
